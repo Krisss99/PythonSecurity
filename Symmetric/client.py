@@ -6,8 +6,8 @@ hostname = '192.168.178.241'
 port = 8888
 s = socket.socket()
 s.connect((hostname, port))
-key = Random.new().read(16)
-iv = Random.new().read(16)
+key = Random.new().read(AES.block_size)
+iv = Random.new().read(AES.block_size)
 aes = AES.new(key, AES.MODE_CBC, iv)
 print(key)
 print(iv)
