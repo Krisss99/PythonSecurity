@@ -7,6 +7,7 @@ hostname = '192.168.178.241'
 port = 8888
 numberOfClients = 1
 s = socket.socket()
+connection = True
 
 def generateRSA():
     privateKey = RSA.generate(2048, Random.new().read)
@@ -22,15 +23,14 @@ def generateAES(key, iv):
 s.bind((hostname, port))
 s.listen(numberOfClients)
 c, addr = s.accept()
-connection = True
 print(f'Got connection from {addr}')
 privateKey, publicKey, publicKeyPEM = generateRSA()
 print(publicKeyPEM)
 c.send(publicKeyPEM)
-key = c.recv(1024)
-iv = c.recv(1024)
-print(key)
-print(iv)
+encryptedKey = c.recv(1024)
+encryptedIv = c.recv(1024)
+key = privateKey.decrypt(encryptedKey)
+iv = privateKey.decrypt(encryptedIv)
 symmetricKey = generateAES(key, iv)
 while(connection == True):
     encrypted = c.recv(1024)
