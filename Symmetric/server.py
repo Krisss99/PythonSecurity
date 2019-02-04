@@ -2,7 +2,7 @@ from Crypto.Cipher import AES
 from Crypto import Random
 import socket, time
 
-hostname = '192.168.178.241'
+hostname = '172.16.150.128'
 port = 8888
 numberOfClients = 1
 

@@ -1,6 +1,6 @@
 import socket
 
-hostname = '192.168.178.241'
+hostname = '172.16.150.128'
 port = 8888
 numberOfClients = 1
 

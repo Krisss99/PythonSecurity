@@ -3,7 +3,7 @@ from Crypto.PublicKey import RSA
 from Crypto import Random
 import socket, time
 
-hostname = '192.168.178.241'
+hostname = '172.16.150.128'
 port = 8888
 numberOfClients = 1
 s = socket.socket()
